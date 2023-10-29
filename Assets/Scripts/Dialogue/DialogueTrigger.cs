@@ -20,8 +20,8 @@ public class DialogueTrigger : MonoBehaviour
         if (_currentStory == story)
         {
             isDialogueFinished = true;
-            DialogueManager.GetInstance().OnStoryStarted -= SetCurrentStory;
-            DialogueManager.GetInstance().OnStoryEnded -= SetStoryFinished;
+            DialogueManager.Instance.OnStoryStarted -= SetCurrentStory;
+            DialogueManager.Instance.OnStoryEnded -= SetStoryFinished;
         }
     }
 
@@ -29,11 +29,11 @@ public class DialogueTrigger : MonoBehaviour
     {
         if (
             !isDialogueFinished &&
-            !DialogueManager.GetInstance().dialogueIsPlaying) 
+            !DialogueManager.Instance.dialogueIsPlaying) 
         {
-            DialogueManager.GetInstance().OnStoryStarted += SetCurrentStory;
-            DialogueManager.GetInstance().OnStoryEnded += SetStoryFinished;
-            DialogueManager.GetInstance().EnterDialogueMode(inkJSON);
+            DialogueManager.Instance.OnStoryStarted += SetCurrentStory;
+            DialogueManager.Instance.OnStoryEnded += SetStoryFinished;
+            DialogueManager.Instance.EnterDialogueMode(inkJSON);
         }
     }
 }
