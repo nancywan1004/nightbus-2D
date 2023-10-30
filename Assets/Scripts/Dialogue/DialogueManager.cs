@@ -192,12 +192,6 @@ public class DialogueManager : MonoBehaviour
         }
     }
 
-    private void GoBackToLastStep()
-    {
-        //TODO
-        
-    }
-
     private IEnumerator DisplayLine(string line) 
     {
         // set the text to the full line, but set the visible characters to 0
