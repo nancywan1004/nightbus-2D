@@ -10,6 +10,7 @@ using Random = UnityEngine.Random;
 
 public class DialogueManager : MonoBehaviour
 {
+    public static DialogueManager Instance { get; private set; }
     [Header("Params")]
     [SerializeField] private float typingSpeed = 0.04f;
 
@@ -18,7 +19,7 @@ public class DialogueManager : MonoBehaviour
 
     [Header("Dialogue UI")]
     [SerializeField] private GameObject dialoguePanel;
-    [SerializeField] private Button continueButton;
+    
     [SerializeField] private TextMeshProUGUI dialogueText;
     [SerializeField] private TextMeshProUGUI displayNameText;
 
@@ -38,10 +39,9 @@ public class DialogueManager : MonoBehaviour
     public bool dialogueIsPlaying { get; private set; }
 
     private bool canContinueToNextLine = false;
+    private bool canGoBackToPreviousLine = false;
 
     private Coroutine displayLineCoroutine;
-
-    private static DialogueManager instance;
 
     private const string SPEAKER_TAG = "speaker";
     private const string AUDIO_TAG = "audio";
@@ -54,22 +54,17 @@ public class DialogueManager : MonoBehaviour
 
     private void Awake() 
     {
-        if (instance != null)
+        if (Instance != null)
         {
             Debug.LogWarning("Found more than one Dialogue Manager in the scene");
         }
-        instance = this;
+        Instance = this;
 
         dialogueVariables = new DialogueVariables(loadGlobalsJSON);
         inkExternalFunctions = new InkExternalFunctions();
 
         audioSource = this.gameObject.AddComponent<AudioSource>();
         currentAudioInfo = defaultAudioInfo;
-    }
-
-    public static DialogueManager GetInstance() 
-    {
-        return instance;
     }
 
     private void Start() 
@@ -116,19 +111,19 @@ public class DialogueManager : MonoBehaviour
     private void Update() 
     {
         // return right away if dialogue isn't playing
-        if (!dialogueIsPlaying) 
-        {
-            return;
-        }
+        // if (!dialogueIsPlaying) 
+        // {
+        //     return;
+        // }
 
         // handle continuing to the next line in the dialogue when submit is pressed
         // NOTE: The 'currentStory.currentChoiecs.Count == 0' part was to fix a bug after the Youtube video was made
-        if (canContinueToNextLine 
-            && currentStory.currentChoices.Count == 0 
-            && DialogueInputManager.Instance.GetSubmitPressed())
-        {
-            ContinueStory();
-        }
+        // if (canContinueToNextLine 
+        //     && currentStory.currentChoices.Count == 0 
+        //     && DialogueInputManager.Instance.GetSubmitPressed())
+        // {
+        //     ContinueStory();
+        // }
     }
 
     public void EnterDialogueMode(TextAsset inkJSON) 
@@ -142,7 +137,6 @@ public class DialogueManager : MonoBehaviour
 
         // reset portrait, layout, and speaker
         displayNameText.text = "???";
-        continueButton.onClick.AddListener(ContinueStory);
 
         ContinueStory();
         OnStoryStarted?.Invoke(currentStory);
@@ -158,7 +152,6 @@ public class DialogueManager : MonoBehaviour
         dialogueIsPlaying = false;
         dialoguePanel.SetActive(false);
         dialogueText.text = "";
-        continueButton.onClick.RemoveAllListeners();
 
         // go back to default audio
         //SetCurrentAudioInfo(defaultAudioInfo.id);
@@ -187,6 +180,10 @@ public class DialogueManager : MonoBehaviour
                 // handle tags
                 HandleTags(currentStory.currentTags);
                 displayLineCoroutine = StartCoroutine(DisplayLine(nextLine));
+                if (!canGoBackToPreviousLine)
+                {
+                    canGoBackToPreviousLine = true;
+                }
             }
         }
         else 
@@ -195,18 +192,12 @@ public class DialogueManager : MonoBehaviour
         }
     }
 
-    private void GoBackToLastStep()
-    {
-        //TODO
-    }
-
     private IEnumerator DisplayLine(string line) 
     {
         // set the text to the full line, but set the visible characters to 0
         dialogueText.text = line;
         dialogueText.maxVisibleCharacters = 0;
         // hide items while text is typing
-        continueButton.gameObject.SetActive(false);
         if (choices.Length > 0)
         {
             HideChoices();
@@ -245,7 +236,6 @@ public class DialogueManager : MonoBehaviour
         }
 
         // actions to take after the entire line has finished displaying
-        continueButton.gameObject.SetActive(true);
         if (choices.Length > 0)
         {
             DisplayChoices();

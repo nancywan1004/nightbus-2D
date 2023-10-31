@@ -6,6 +6,8 @@ public class DialogueTrigger : MonoBehaviour
     [Header("Ink JSON")]
     [SerializeField] private TextAsset inkJSON;
 
+    [SerializeField] private FirstDayGameState gameStateToEnterOnDialogueFinished;
+
     private bool playerInRange;
     private bool isDialogueFinished = false;
     private Story _currentStory;
@@ -20,8 +22,10 @@ public class DialogueTrigger : MonoBehaviour
         if (_currentStory == story)
         {
             isDialogueFinished = true;
-            DialogueManager.GetInstance().OnStoryStarted -= SetCurrentStory;
-            DialogueManager.GetInstance().OnStoryEnded -= SetStoryFinished;
+            DialogueManager.Instance.OnStoryStarted -= SetCurrentStory;
+            DialogueManager.Instance.OnStoryEnded -= SetStoryFinished;
+            // Enter Office room state
+            FirstDayGameStateManager.Instance.SetCurrentState(gameStateToEnterOnDialogueFinished);
         }
     }
 
@@ -29,11 +33,11 @@ public class DialogueTrigger : MonoBehaviour
     {
         if (
             !isDialogueFinished &&
-            !DialogueManager.GetInstance().dialogueIsPlaying) 
+            !DialogueManager.Instance.dialogueIsPlaying) 
         {
-            DialogueManager.GetInstance().OnStoryStarted += SetCurrentStory;
-            DialogueManager.GetInstance().OnStoryEnded += SetStoryFinished;
-            DialogueManager.GetInstance().EnterDialogueMode(inkJSON);
+            DialogueManager.Instance.OnStoryStarted += SetCurrentStory;
+            DialogueManager.Instance.OnStoryEnded += SetStoryFinished;
+            DialogueManager.Instance.EnterDialogueMode(inkJSON);
         }
     }
 }
