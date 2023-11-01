@@ -143,6 +143,38 @@ PrefabInstance:
       propertyPath: introductionText
       value: 
       objectReference: {fileID: 8990233933392608374}
+    - target: {fileID: 1059283344666521969, guid: b28ce10b81b0f41578d402b55b2f703f, type: 3}
+      propertyPath: onFinishReadingBrochure.m_PersistentCalls.m_Calls.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1059283344666521969, guid: b28ce10b81b0f41578d402b55b2f703f, type: 3}
+      propertyPath: onFinishReadingBrochure.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 1059283344666521969, guid: b28ce10b81b0f41578d402b55b2f703f, type: 3}
+      propertyPath: onFinishReadingBrochure.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 1233339405}
+    - target: {fileID: 1059283344666521969, guid: b28ce10b81b0f41578d402b55b2f703f, type: 3}
+      propertyPath: onFinishReadingBrochure.m_PersistentCalls.m_Calls.Array.data[0].m_CallState
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 1059283344666521969, guid: b28ce10b81b0f41578d402b55b2f703f, type: 3}
+      propertyPath: onFinishReadingBrochure.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: EnterDialogueMode
+      objectReference: {fileID: 0}
+    - target: {fileID: 1059283344666521969, guid: b28ce10b81b0f41578d402b55b2f703f, type: 3}
+      propertyPath: onFinishReadingBrochure.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
+      value: DialogueManager, Assembly-CSharp
+      objectReference: {fileID: 0}
+    - target: {fileID: 1059283344666521969, guid: b28ce10b81b0f41578d402b55b2f703f, type: 3}
+      propertyPath: onFinishReadingBrochure.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgument
+      value: 
+      objectReference: {fileID: 4900000, guid: cd75edde4914f4a65ab629e322108d15, type: 3}
+    - target: {fileID: 1059283344666521969, guid: b28ce10b81b0f41578d402b55b2f703f, type: 3}
+      propertyPath: onFinishReadingBrochure.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
+      value: UnityEngine.TextAsset, UnityEngine
+      objectReference: {fileID: 0}
     - target: {fileID: 3204003139248682012, guid: b28ce10b81b0f41578d402b55b2f703f, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
@@ -7561,9 +7593,9 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
+      - m_Target: {fileID: 13458060}
         m_TargetAssemblyTypeName: InteractionManager, Assembly-CSharp
-        m_MethodName: InitiateBrochure
+        m_MethodName: CloseBrochure
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
