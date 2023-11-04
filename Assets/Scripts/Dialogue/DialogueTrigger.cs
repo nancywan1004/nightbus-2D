@@ -1,17 +1,23 @@
+using System;
 using Ink.Runtime;
 using UnityEngine;
-using UnityEngine.Events;
 
 public class DialogueTrigger : MonoBehaviour
 {
     [Header("Ink JSON")]
     [SerializeField] private TextAsset inkJSON;
 
-    [SerializeField] private UnityEvent onDialogueFinished;
+    public Action<int> OnDialogueFinished;
 
     private bool playerInRange;
     private bool isDialogueFinished = false;
     private Story _currentStory;
+
+    public void UpdateDialogueJson(TextAsset newInkJson)
+    {
+        inkJSON = newInkJson;
+        isDialogueFinished = false;
+    }
 
     private void SetCurrentStory(Story story)
     {
@@ -25,9 +31,7 @@ public class DialogueTrigger : MonoBehaviour
             isDialogueFinished = true;
             DialogueManager.Instance.OnStoryStarted -= SetCurrentStory;
             DialogueManager.Instance.OnStoryEnded -= SetStoryFinished;
-            onDialogueFinished?.Invoke();
-            // Enter Office room state
-            //FirstDayGameStateManager.Instance.SetCurrentState(gameStateToEnterOnDialogueFinished);
+            OnDialogueFinished?.Invoke((int)_currentStory.variablesState["dialogueIndex"]);
         }
     }
 

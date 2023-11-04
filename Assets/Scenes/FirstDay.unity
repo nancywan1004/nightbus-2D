@@ -154,18 +154,18 @@ PrefabInstance:
     - target: {fileID: 1059283344666521969, guid: b28ce10b81b0f41578d402b55b2f703f, type: 3}
       propertyPath: onFinishReadingBrochure.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
-      objectReference: {fileID: 1233339405}
+      objectReference: {fileID: 2121011471}
     - target: {fileID: 1059283344666521969, guid: b28ce10b81b0f41578d402b55b2f703f, type: 3}
       propertyPath: onFinishReadingBrochure.m_PersistentCalls.m_Calls.Array.data[0].m_CallState
       value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 1059283344666521969, guid: b28ce10b81b0f41578d402b55b2f703f, type: 3}
       propertyPath: onFinishReadingBrochure.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
-      value: EnterDialogueMode
+      value: UpdateDialogueJson
       objectReference: {fileID: 0}
     - target: {fileID: 1059283344666521969, guid: b28ce10b81b0f41578d402b55b2f703f, type: 3}
       propertyPath: onFinishReadingBrochure.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
-      value: DialogueManager, Assembly-CSharp
+      value: DialogueTrigger, Assembly-CSharp
       objectReference: {fileID: 0}
     - target: {fileID: 1059283344666521969, guid: b28ce10b81b0f41578d402b55b2f703f, type: 3}
       propertyPath: onFinishReadingBrochure.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgument
@@ -340,7 +340,7 @@ Canvas:
   m_AdditionalShaderChannelsFlag: 25
   m_UpdateRectTransformForStandalone: 0
   m_SortingLayerID: 0
-  m_SortingOrder: 0
+  m_SortingOrder: 1
   m_TargetDisplay: 0
 --- !u!1 &108563697
 GameObject:
@@ -1422,7 +1422,6 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 2084539237}
-  - {fileID: 2121011470}
   - {fileID: 1800476069}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -2386,7 +2385,7 @@ GameObject:
   - component: {fileID: 2121011470}
   - component: {fileID: 2121011471}
   m_Layer: 0
-  m_Name: NPC_0
+  m_Name: Global_NPC
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2405,7 +2404,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 895070839}
+  m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &2121011471
 MonoBehaviour:
@@ -2420,9 +2419,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   inkJSON: {fileID: 4900000, guid: 43ba7b613bf8849d0ab785ef47426c29, type: 3}
-  onDialogueFinished:
-    m_PersistentCalls:
-      m_Calls: []
 --- !u!1 &36502348884219908
 GameObject:
   m_ObjectHideFlags: 0
@@ -5609,16 +5605,16 @@ RectTransform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7129995778723542039}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalRotation: {x: -0, y: -0, z: -0.6816973, w: 0.7316343}
   m_LocalPosition: {x: 0, y: 0, z: 4.8208847}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 220391102988086626}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: -85.953}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 502, y: 56.705566}
+  m_AnchoredPosition: {x: 114, y: -371.00024}
   m_SizeDelta: {x: 200, y: 300}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &5871219413473062406
@@ -6648,6 +6644,10 @@ PrefabInstance:
       propertyPath: mainRoom
       value: 
       objectReference: {fileID: 895070838}
+    - target: {fileID: 7811258749857665456, guid: 21e8609c3b58a4e9d9227aba43940c24, type: 3}
+      propertyPath: dialogueTrigger
+      value: 
+      objectReference: {fileID: 2121011471}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -7896,4 +7896,5 @@ SceneRoots:
   - {fileID: 463844151}
   - {fileID: 108563698}
   - {fileID: 7773999711333995615}
+  - {fileID: 2121011470}
   - {fileID: 390623865}

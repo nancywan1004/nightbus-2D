@@ -7,7 +7,17 @@ public class FirstDayGameStateManager : GameStateManager<FirstDayGameState>
     [SerializeField] private GameObject mainRoom;
     [SerializeField] private GameObject clinic;
     [SerializeField] private GameObject office;
+    [SerializeField] private DialogueTrigger dialogueTrigger;
 
+    public void HandleDialogueFinishedEvent(int index)
+    {
+        switch (index)
+        {
+            case 3:
+                SetCurrentState(FirstDayGameState.Office);
+                break;
+        }
+    }
     public override void SetCurrentState(FirstDayGameState newState)
     {
         base.SetCurrentState(newState);
@@ -42,9 +52,13 @@ public class FirstDayGameStateManager : GameStateManager<FirstDayGameState>
             Instance = this; 
         }
         SetCurrentState(FirstDayGameState.MainRoom);
+        dialogueTrigger.OnDialogueFinished += HandleDialogueFinishedEvent;
     }
-    
-    
+
+    private void OnDestroy()
+    {
+        dialogueTrigger.OnDialogueFinished -= HandleDialogueFinishedEvent;
+    }
 }
 
 public enum FirstDayGameState
