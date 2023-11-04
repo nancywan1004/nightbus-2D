@@ -1,1 +1,1 @@
-VAR npc_name = ""
+VAR dialogueIndex = 1

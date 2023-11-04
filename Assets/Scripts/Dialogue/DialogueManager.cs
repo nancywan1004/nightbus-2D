@@ -5,7 +5,6 @@ using UnityEngine;
 using TMPro;
 using Ink.Runtime;
 using UnityEngine.EventSystems;
-using UnityEngine.UI;
 using Random = UnityEngine.Random;
 
 public class DialogueManager : MonoBehaviour
@@ -130,7 +129,6 @@ public class DialogueManager : MonoBehaviour
     {
         currentStory = new Story(inkJSON.text);
         dialogueIsPlaying = true;
-        dialoguePanel.SetActive(true);
 
         dialogueVariables.StartListening(currentStory);
         //inkExternalFunctions.Bind(currentStory, emoteAnimator);
@@ -177,6 +175,7 @@ public class DialogueManager : MonoBehaviour
             // otherwise, handle the normal case for continuing the story
             else 
             {
+                dialoguePanel.SetActive(true);
                 // handle tags
                 HandleTags(currentStory.currentTags);
                 displayLineCoroutine = StartCoroutine(DisplayLine(nextLine));
