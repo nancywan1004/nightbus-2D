@@ -1,5 +1,7 @@
 using System;
+using System.Collections;
 using UnityEngine;
+using UnityEngine.Serialization;
 
 public class FirstDayGameStateManager : GameStateManager<FirstDayGameState>
 {
@@ -7,6 +9,7 @@ public class FirstDayGameStateManager : GameStateManager<FirstDayGameState>
     [SerializeField] private GameObject mainRoom;
     [SerializeField] private GameObject clinic;
     [SerializeField] private GameObject office;
+    [SerializeField] private GameObject transition;
     [SerializeField] private DialogueTrigger dialogueTrigger;
 
     public void HandleDialogueFinishedEvent(int index)
@@ -14,10 +17,19 @@ public class FirstDayGameStateManager : GameStateManager<FirstDayGameState>
         switch (index)
         {
             case 3:
-                SetCurrentState(FirstDayGameState.Office);
+                StartCoroutine(SwitchRoom(FirstDayGameState.Office));
                 break;
         }
     }
+
+    private IEnumerator SwitchRoom(FirstDayGameState newGameState)
+    {
+        transition.SetActive(true);
+        yield return new WaitForSeconds(2.0f);
+        transition.SetActive(false);
+        SetCurrentState(newGameState);
+    }
+    
     public override void SetCurrentState(FirstDayGameState newState)
     {
         base.SetCurrentState(newState);
