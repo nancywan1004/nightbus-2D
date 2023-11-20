@@ -37,7 +37,7 @@ public class DialogueTrigger : MonoBehaviour
 
     private void Update() 
     {
-        if (
+        if (inkJSON != null &&
             !isDialogueFinished &&
             !DialogueManager.Instance.dialogueIsPlaying) 
         {

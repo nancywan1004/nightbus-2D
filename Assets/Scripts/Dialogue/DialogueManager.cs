@@ -5,6 +5,7 @@ using UnityEngine;
 using TMPro;
 using Ink.Runtime;
 using UnityEngine.EventSystems;
+using UnityEngine.UI;
 using Random = UnityEngine.Random;
 
 public class DialogueManager : MonoBehaviour
@@ -79,7 +80,7 @@ public class DialogueManager : MonoBehaviour
             choicesText[index] = choice.GetComponentInChildren<TextMeshProUGUI>();
             index++;
         }
-
+        
         //InitializeAudioInfoDictionary();
     }
 
@@ -109,20 +110,20 @@ public class DialogueManager : MonoBehaviour
 
     private void Update() 
     {
-        // return right away if dialogue isn't playing
-        // if (!dialogueIsPlaying) 
-        // {
-        //     return;
-        // }
+        //return right away if dialogue isn't playing
+        if (!dialogueIsPlaying) 
+        {
+            return;
+        }
 
-        // handle continuing to the next line in the dialogue when submit is pressed
-        // NOTE: The 'currentStory.currentChoiecs.Count == 0' part was to fix a bug after the Youtube video was made
-        // if (canContinueToNextLine 
-        //     && currentStory.currentChoices.Count == 0 
-        //     && DialogueInputManager.Instance.GetSubmitPressed())
-        // {
-        //     ContinueStory();
-        // }
+        //handle continuing to the next line in the dialogue when submit is pressed
+        //NOTE: The 'currentStory.currentChoiecs.Count == 0' part was to fix a bug after the Youtube video was made
+        if (canContinueToNextLine 
+            && currentStory.currentChoices.Count == 0 
+            && DialogueInputManager.Instance.GetSubmitPressed())
+        {
+            ContinueStory();
+        }
     }
 
     public void EnterDialogueMode(TextAsset inkJSON) 
@@ -153,7 +154,7 @@ public class DialogueManager : MonoBehaviour
 
         // go back to default audio
         //SetCurrentAudioInfo(defaultAudioInfo.id);
-        
+
         OnStoryEnded?.Invoke(currentStory);
     }
 
