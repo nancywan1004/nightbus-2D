@@ -4,6 +4,7 @@ using UnityEngine.UI;
 
 public class GlobalInteractionUIManager : MonoBehaviour
 {
+
     [SerializeField] private Button _secondDaySceneSwitchButton;
 
     private const string SECOND_DAY_SCENE_NAME = "SecondDay";
