@@ -170,7 +170,7 @@ PrefabInstance:
     - target: {fileID: 1059283344666521969, guid: b28ce10b81b0f41578d402b55b2f703f, type: 3}
       propertyPath: onFinishReadingBrochure.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgument
       value: 
-      objectReference: {fileID: 4900000, guid: cd75edde4914f4a65ab629e322108d15, type: 3}
+      objectReference: {fileID: 4900000, guid: dc744348e463049a79777396aa7b4b5c, type: 3}
     - target: {fileID: 1059283344666521969, guid: b28ce10b81b0f41578d402b55b2f703f, type: 3}
       propertyPath: onFinishReadingBrochure.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
       value: UnityEngine.TextAsset, UnityEngine
@@ -1718,6 +1718,46 @@ MonoBehaviour:
       m_Calls: []
     m_ActionId: 0b3712b8-0026-4330-bac7-e0dec511ddba
     m_ActionName: Player/New action
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: 91d3c9fa-5dd8-4c87-bb3c-ce175403f69c
+    m_ActionName: UI/Navigate[/Keyboard/w,/Keyboard/upArrow,/Keyboard/s,/Keyboard/downArrow,/Keyboard/a,/Keyboard/leftArrow,/Keyboard/d,/Keyboard/rightArrow]
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: d424267f-bf52-4ade-9738-6ac944d98127
+    m_ActionName: UI/Submit[/Keyboard/enter]
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: 5da53fe0-6bf9-4b24-9128-0ec58920d077
+    m_ActionName: UI/Cancel[/Keyboard/escape]
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: 4f6e245e-1bbb-4c87-8fe9-9782eb6b82a7
+    m_ActionName: UI/Point[/Mouse/position,/Pen/position]
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: 5ef42a32-b543-4211-90ef-c61a4453e443
+    m_ActionName: UI/Click[/Mouse/leftButton,/Pen/tip]
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: efc2ddbf-ea83-4e8f-893f-eade26dd10e4
+    m_ActionName: UI/ScrollWheel[/Mouse/scroll]
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: 77bfcb09-efc9-405f-9a41-6e01b26a9105
+    m_ActionName: UI/MiddleClick[/Mouse/middleButton]
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: 27bfac08-30d8-4f8a-9cce-d5f0ead2cbd2
+    m_ActionName: UI/RightClick[/Mouse/rightButton]
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: 91eb284e-1754-4f8f-8636-76b2baeb84e3
+    m_ActionName: UI/TrackedDevicePosition
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: 9bde401b-6c1d-4224-8667-309d53471021
+    m_ActionName: UI/TrackedDeviceOrientation
   m_NeverAutoSwitchControlSchemes: 0
   m_DefaultControlScheme: 
   m_DefaultActionMap: Dialogue
@@ -7266,7 +7306,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 90d2abe82e2ad40a0ae65af5b4239270, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  inkJSON: {fileID: 4900000, guid: 43ba7b613bf8849d0ab785ef47426c29, type: 3}
+  inkJSON: {fileID: 4900000, guid: fa5e2a18f6fa84218af624a1894d1c2d, type: 3}
 --- !u!1 &36502348884219908
 GameObject:
   m_ObjectHideFlags: 0

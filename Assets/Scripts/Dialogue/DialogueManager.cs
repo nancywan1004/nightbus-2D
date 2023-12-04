@@ -18,6 +18,8 @@ public class DialogueManager : MonoBehaviour
     [SerializeField] private TextAsset loadGlobalsJSON;
 
     [Header("Dialogue UI")]
+    [SerializeField] private bool isStackable;
+    [SerializeField] private DialoguePoolManager poolManager;
     [SerializeField] private GameObject dialoguePanel;
     
     [SerializeField] private TextMeshProUGUI dialogueText;
@@ -150,7 +152,14 @@ public class DialogueManager : MonoBehaviour
 
         dialogueIsPlaying = false;
         dialoguePanel.SetActive(false);
-        dialogueText.text = "";
+        if (isStackable)
+        {
+            poolManager.ClearPool();
+        }
+        else
+        {
+            dialogueText.text = "";
+        }
 
         // go back to default audio
         //SetCurrentAudioInfo(defaultAudioInfo.id);
@@ -192,11 +201,22 @@ public class DialogueManager : MonoBehaviour
         }
     }
 
-    private IEnumerator DisplayLine(string line) 
+    private IEnumerator DisplayLine(string line)
     {
-        // set the text to the full line, but set the visible characters to 0
-        dialogueText.text = line;
-        dialogueText.maxVisibleCharacters = 0;
+        DialogueBox box = null;
+        if (isStackable)
+        {
+            box = poolManager.TryRetrieveDialogueBox();
+            box.DialogueText.text = line;
+            box.DialogueText.maxVisibleCharacters = 0;
+        }
+        else
+        {
+            // set the text to the full line, but set the visible characters to 0
+            dialogueText.text = line;
+            dialogueText.maxVisibleCharacters = 0;
+        }
+
         // hide items while text is typing
         if (choices.Length > 0)
         {
@@ -213,7 +233,14 @@ public class DialogueManager : MonoBehaviour
             // if the submit button is pressed, finish up displaying the line right away
             if (DialogueInputManager.Instance.GetSubmitPressed()) 
             {
-                dialogueText.maxVisibleCharacters = line.Length;
+                if (isStackable && box != null)
+                {
+                    box.DialogueText.maxVisibleCharacters = line.Length;
+                }
+                else
+                {
+                    dialogueText.maxVisibleCharacters = line.Length;
+                }
                 break;
             }
 
@@ -230,7 +257,15 @@ public class DialogueManager : MonoBehaviour
             else 
             {
                 //PlayDialogueSound(dialogueText.maxVisibleCharacters, dialogueText.text[dialogueText.maxVisibleCharacters]);
-                dialogueText.maxVisibleCharacters++;
+                if (isStackable && box != null)
+                {
+                    box.DialogueText.maxVisibleCharacters++;
+                }
+                else
+                {
+                    dialogueText.maxVisibleCharacters++;
+                }
+                
                 yield return new WaitForSeconds(typingSpeed);
             }
         }
