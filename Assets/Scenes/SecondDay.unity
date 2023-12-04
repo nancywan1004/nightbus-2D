@@ -1469,6 +1469,7 @@ GameObject:
   - component: {fileID: 456716030}
   - component: {fileID: 456716032}
   - component: {fileID: 456716033}
+  - component: {fileID: 456716034}
   m_Layer: 5
   m_Name: CuttingBoard
   m_TagString: Untagged
@@ -1508,7 +1509,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_Material: {fileID: 0}
+  m_Material: {fileID: 2100000, guid: 6f44d8f5ce8814885b6a1f1f82a46acd, type: 2}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
@@ -1603,6 +1604,18 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   inkJSON: {fileID: 0}
+--- !u!114 &456716034
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 456716028}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c4b61e891d0e543eca4d413e73dbe031, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &459014115
 GameObject:
   m_ObjectHideFlags: 0
@@ -3932,6 +3945,7 @@ GameObject:
   - component: {fileID: 2076124188}
   - component: {fileID: 2076124187}
   - component: {fileID: 2076124189}
+  - component: {fileID: 2076124190}
   m_Layer: 5
   m_Name: Obj_B
   m_TagString: Untagged
@@ -3971,7 +3985,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_Material: {fileID: 0}
+  m_Material: {fileID: 2100000, guid: b5acad902aa1740da9a2d49a8509c1eb, type: 2}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
@@ -4041,6 +4055,18 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls: []
+--- !u!114 &2076124190
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2076124185}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c4b61e891d0e543eca4d413e73dbe031, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &2090619583
 GameObject:
   m_ObjectHideFlags: 0
