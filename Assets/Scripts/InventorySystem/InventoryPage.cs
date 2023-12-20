@@ -104,4 +104,11 @@ public class InventoryPage : MonoBehaviour
             item.Deselect();
         }
     }
+
+    internal void UpdateDescription(int itemIndex,string description)
+    {
+        itemDescription.SetDescription(description);
+        DeselectAllItems();
+
+    }
 }

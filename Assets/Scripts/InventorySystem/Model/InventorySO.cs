@@ -53,6 +53,10 @@ public class InventorySO : ScriptableObject
         
     }
 
+    public InventoryItem2 GetItemAt(int itemIndex)
+    {
+        return inventoryItems[itemIndex];
+    }
 }
 [Serializable]
 public struct InventoryItem2

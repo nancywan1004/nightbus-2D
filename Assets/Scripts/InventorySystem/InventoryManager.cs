@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -11,7 +12,7 @@ public class InventoryManager : MonoBehaviour
     [SerializeField] private ItemSO itemso2;//for debug
     private void Start()
     {
-        inventoryUI.InitializeInventoryUI(inventoryData.Size);
+        PrepareUI();
         inventoryData.Initialize();
         inventoryData.AddItem(itemso1);//for debug
         inventoryData.AddItem(itemso2);//for debug
@@ -20,5 +21,39 @@ public class InventoryManager : MonoBehaviour
             inventoryUI.UpdateData(item.Key, item.Value.item.ItemImage);
         }
     }
+    private void PrepareUI()
+    {
+        inventoryUI.InitializeInventoryUI(inventoryData.Size);
+        this.inventoryUI.OnDescriptionRequested += HandleDescriptionRequest;
+        this.inventoryUI.OnItemActionRequested += HandleItemActionRequest;
+        this.inventoryUI.OnStartDragging += HandleDragging;
+        this.inventoryUI.OnInteractRequested += HandleInteractionRequest;
+    }
 
+    private void HandleInteractionRequest(int itemIndex)
+    {
+        
+    }
+
+    private void HandleDragging(int itemIndex)
+    {
+        
+    }
+
+    private void HandleItemActionRequest(int itemIndex)
+    {
+        
+    }
+
+    private void HandleDescriptionRequest(int itemIndex)
+    {
+        InventoryItem2 inventoryItem = inventoryData.GetItemAt(itemIndex);
+        if (inventoryItem.IsEmpty)
+        {
+            return;
+        }
+        ItemSO item = inventoryItem.item;
+        inventoryUI.UpdateDescription(itemIndex,item.Description);
+
+    }
 }
