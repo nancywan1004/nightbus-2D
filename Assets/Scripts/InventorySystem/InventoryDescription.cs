@@ -3,22 +3,25 @@ using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
 
-public class InventoryDescription : MonoBehaviour
+namespace Inventory.UI
 {
-    [SerializeField] private TMP_Text description;
-
-    public void Awake()
+    public class InventoryDescription : MonoBehaviour
     {
-        ResetDescription();
-    }
+        [SerializeField] private TMP_Text description;
 
-    public void ResetDescription()
-    {
-        this.description.text = "";
-    }
+        public void Awake()
+        {
+            ResetDescription();
+        }
 
-    public void SetDescription(string itemDescription)
-    {
-        this.description.text = itemDescription;
+        public void ResetDescription()
+        {
+            description.text = "";
+        }
+
+        public void SetDescription(string itemDescription)
+        {
+            description.text = itemDescription;
+        }
     }
 }
