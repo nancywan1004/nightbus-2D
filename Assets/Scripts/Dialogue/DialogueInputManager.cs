@@ -1,5 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
@@ -7,8 +5,9 @@ using UnityEngine.InputSystem;
 // the current input from. It uses Unity's new Input System and
 // functions should be mapped to their corresponding controls
 // using a PlayerInput component with Unity Events.
-
-[RequireComponent(typeof(PlayerInput))]
+namespace Dialogue
+{
+    [RequireComponent(typeof(PlayerInput))]
 public class DialogueInputManager : MonoBehaviour
 {
     public static DialogueInputManager Instance { get; private set; }
@@ -113,4 +112,5 @@ public class DialogueInputManager : MonoBehaviour
         submitPressed = false;
     }
 
+}
 }

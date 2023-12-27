@@ -1,7 +1,6 @@
-using System;
 using System.Collections;
+using Dialogue;
 using UnityEngine;
-using UnityEngine.Serialization;
 
 public class FirstDayGameStateManager : GameStateManager<FirstDayGameState>
 {

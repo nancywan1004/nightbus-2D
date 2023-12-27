@@ -1,14 +1,16 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using Dialogue.UI;
 using UnityEngine;
 using TMPro;
 using Ink.Runtime;
 using UnityEngine.EventSystems;
-using UnityEngine.UI;
 using Random = UnityEngine.Random;
 
-public class DialogueManager : MonoBehaviour
+namespace Dialogue
+{
+    public class DialogueManager : MonoBehaviour
 {
     public static DialogueManager Instance { get; private set; }
     [Header("Params")]
@@ -437,5 +439,7 @@ public class DialogueManager : MonoBehaviour
     {
         //dialogueVariables.SaveVariables();
     }
+
+}
 
 }

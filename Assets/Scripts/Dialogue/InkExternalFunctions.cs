@@ -3,29 +3,33 @@ using System.Collections.Generic;
 using UnityEngine;
 using Ink.Runtime;
 
-public class InkExternalFunctions
+namespace Dialogue
 {
-    public void Bind(Story story, Animator emoteAnimator)
+    public class InkExternalFunctions
     {
-        story.BindExternalFunction("playEmote", (string emoteName) => PlayEmote(emoteName, emoteAnimator));
-    }
-
-    public void Unbind(Story story) 
-    {
-        story.UnbindExternalFunction("playEmote");
-    }
-
-    public void PlayEmote(string emoteName, Animator emoteAnimator)
-    {
-        if (emoteAnimator != null) 
+        public void Bind(Story story, Animator emoteAnimator)
         {
-            emoteAnimator.Play(emoteName);
+            story.BindExternalFunction("playEmote", (string emoteName) => PlayEmote(emoteName, emoteAnimator));
         }
-        else 
+
+        public void Unbind(Story story) 
         {
-            Debug.LogWarning("Tried to play emote, but emote animator was "
-                             + "not initialized when entering dialogue mode.");
+            story.UnbindExternalFunction("playEmote");
         }
-    }
+
+        public void PlayEmote(string emoteName, Animator emoteAnimator)
+        {
+            if (emoteAnimator != null) 
+            {
+                emoteAnimator.Play(emoteName);
+            }
+            else 
+            {
+                Debug.LogWarning("Tried to play emote, but emote animator was "
+                                 + "not initialized when entering dialogue mode.");
+            }
+        }
     
+    }
+
 }

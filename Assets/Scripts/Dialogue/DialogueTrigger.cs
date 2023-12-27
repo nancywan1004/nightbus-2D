@@ -2,48 +2,52 @@ using System;
 using Ink.Runtime;
 using UnityEngine;
 
-public class DialogueTrigger : MonoBehaviour
+namespace Dialogue
 {
-    [Header("Ink JSON")]
-    [SerializeField] private TextAsset inkJSON;
-
-    public Action<int> OnDialogueFinished;
-
-    private bool playerInRange;
-    private bool isDialogueFinished = false;
-    private Story _currentStory;
-
-    public void UpdateDialogueJson(TextAsset newInkJson)
+    public class DialogueTrigger : MonoBehaviour
     {
-        inkJSON = newInkJson;
-        isDialogueFinished = false;
-    }
+        [Header("Ink JSON")]
+        [SerializeField] private TextAsset inkJSON;
 
-    private void SetCurrentStory(Story story)
-    {
-        _currentStory = story;
-    }
+        public Action<int> OnDialogueFinished;
 
-    private void SetStoryFinished(Story story)
-    {
-        if (_currentStory == story)
+        private bool playerInRange;
+        private bool isDialogueFinished = false;
+        private Story _currentStory;
+
+        public void UpdateDialogueJson(TextAsset newInkJson)
         {
-            isDialogueFinished = true;
-            DialogueManager.Instance.OnStoryStarted -= SetCurrentStory;
-            DialogueManager.Instance.OnStoryEnded -= SetStoryFinished;
-            OnDialogueFinished?.Invoke((int)_currentStory.variablesState["dialogueIndex"]);
+            inkJSON = newInkJson;
+            isDialogueFinished = false;
+        }
+
+        private void SetCurrentStory(Story story)
+        {
+            _currentStory = story;
+        }
+
+        private void SetStoryFinished(Story story)
+        {
+            if (_currentStory == story)
+            {
+                isDialogueFinished = true;
+                DialogueManager.Instance.OnStoryStarted -= SetCurrentStory;
+                DialogueManager.Instance.OnStoryEnded -= SetStoryFinished;
+                OnDialogueFinished?.Invoke((int)_currentStory.variablesState["dialogueIndex"]);
+            }
+        }
+
+        private void Update() 
+        {
+            if (inkJSON != null &&
+                !isDialogueFinished &&
+                !DialogueManager.Instance.dialogueIsPlaying) 
+            {
+                DialogueManager.Instance.OnStoryStarted += SetCurrentStory;
+                DialogueManager.Instance.OnStoryEnded += SetStoryFinished;
+                DialogueManager.Instance.EnterDialogueMode(inkJSON);
+            }
         }
     }
 
-    private void Update() 
-    {
-        if (inkJSON != null &&
-            !isDialogueFinished &&
-            !DialogueManager.Instance.dialogueIsPlaying) 
-        {
-            DialogueManager.Instance.OnStoryStarted += SetCurrentStory;
-            DialogueManager.Instance.OnStoryEnded += SetStoryFinished;
-            DialogueManager.Instance.EnterDialogueMode(inkJSON);
-        }
-    }
 }

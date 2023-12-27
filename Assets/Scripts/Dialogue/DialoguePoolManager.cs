@@ -1,59 +1,64 @@
 using System.Collections.Generic;
+using Dialogue.UI;
 using UnityEngine;
 
-public class DialoguePoolManager : MonoBehaviour
+namespace Dialogue
 {
-    [SerializeField] private List<DialogueBox> dialogueBoxes;
-    private int _maxPoolSize = 0;
-    private int _currentPoolIndex = 0;
-
-    private void Awake()
+    public class DialoguePoolManager : MonoBehaviour
     {
-        _maxPoolSize = dialogueBoxes.Count;
-    }
-
-    public DialogueBox TryRetrieveDialogueBox()
-    {
-        DialogueBox box = null;
-        if (_currentPoolIndex < _maxPoolSize-1)
+        [SerializeField] private List<DialogueBox> dialogueBoxes;
+        private int _maxPoolSize = 0;
+        private int _currentPoolIndex = 0;
+    
+        private void Awake()
         {
-            if (_currentPoolIndex == 0)
+            _maxPoolSize = dialogueBoxes.Count;
+        }
+    
+        public DialogueBox TryRetrieveDialogueBox()
+        {
+            DialogueBox box = null;
+            if (_currentPoolIndex < _maxPoolSize-1)
             {
-                box = dialogueBoxes[_currentPoolIndex];
-                _currentPoolIndex++;
-
+                if (_currentPoolIndex == 0)
+                {
+                    box = dialogueBoxes[_currentPoolIndex];
+                    _currentPoolIndex++;
+    
+                }
+                else
+                {
+                    _currentPoolIndex++;
+                    box = dialogueBoxes[_currentPoolIndex];
+                }
+                box.gameObject.SetActive(true);
+                return box;
             }
             else
             {
-                _currentPoolIndex++;
-                box = dialogueBoxes[_currentPoolIndex];
+                box = dialogueBoxes[0];
+                box.gameObject.SetActive(false);
+                dialogueBoxes.RemoveAt(0);
+                dialogueBoxes.Add(box);
+                box.gameObject.SetActive(true);
+                _currentPoolIndex = 0;
+                return box;
             }
-            box.gameObject.SetActive(true);
-            return box;
         }
-        else
+    
+        public DialogueBox GetCurrentDialogueBox()
         {
-            box = dialogueBoxes[0];
-            box.gameObject.SetActive(false);
-            dialogueBoxes.RemoveAt(0);
-            dialogueBoxes.Add(box);
-            box.gameObject.SetActive(true);
-            _currentPoolIndex = 0;
-            return box;
+            return dialogueBoxes[_currentPoolIndex];
+        }
+    
+        public void ClearPool()
+        {
+            foreach (var box in dialogueBoxes)
+            {
+                box.DialogueText.text = "";
+                box.gameObject.SetActive(false);
+            }
         }
     }
 
-    public DialogueBox GetCurrentDialogueBox()
-    {
-        return dialogueBoxes[_currentPoolIndex];
-    }
-
-    public void ClearPool()
-    {
-        foreach (var box in dialogueBoxes)
-        {
-            box.DialogueText.text = "";
-            box.gameObject.SetActive(false);
-        }
-    }
 }
