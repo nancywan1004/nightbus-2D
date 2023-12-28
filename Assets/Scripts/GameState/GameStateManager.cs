@@ -1,18 +1,21 @@
 using System;
 using UnityEngine;
 
-public class GameStateManager<T> : MonoBehaviour where T : Enum
+namespace GameState
 {
-    public event Action<T> OnGameStateChanged;
-
-    public T CurrentState { get; private set; }
-
-    public virtual void SetCurrentState(T state)
+    public class GameStateManager<T> : MonoBehaviour where T : Enum
     {
-        if (!CurrentState.Equals(state))
+        public event Action<T> OnGameStateChanged;
+
+        public T CurrentState { get; private set; }
+
+        public virtual void SetCurrentState(T state)
         {
-            CurrentState = state;
-            OnGameStateChanged?.Invoke(CurrentState);
+            if (!CurrentState.Equals(state))
+            {
+                CurrentState = state;
+                OnGameStateChanged?.Invoke(CurrentState);
+            }
         }
     }
 }

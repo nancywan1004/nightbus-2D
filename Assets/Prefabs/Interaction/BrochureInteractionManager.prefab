@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 3204003139248682012}
   - component: {fileID: 1059283344666521969}
   m_Layer: 0
-  m_Name: InteractionManager
+  m_Name: BrochureInteractionManager
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

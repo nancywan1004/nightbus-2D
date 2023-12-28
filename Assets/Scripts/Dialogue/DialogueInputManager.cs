@@ -6,111 +6,111 @@ using UnityEngine.InputSystem;
 // functions should be mapped to their corresponding controls
 // using a PlayerInput component with Unity Events.
 namespace Dialogue
-{
+{ 
     [RequireComponent(typeof(PlayerInput))]
-public class DialogueInputManager : MonoBehaviour
-{
-    public static DialogueInputManager Instance { get; private set; }
-
-    private Vector2 moveDirection = Vector2.zero;
-    private bool jumpPressed = false;
-    private bool interactPressed = false;
-    private bool submitPressed = false;
-
-    private void Awake()
+    public class DialogueInputManager : MonoBehaviour
     {
-        if (Instance != null && Instance != this) 
-        { 
-            Destroy(this); 
-        } 
-        else 
-        { 
-            Instance = this; 
-        } 
-    }
+        public static DialogueInputManager Instance { get; private set; }
 
-    public void MovePressed(InputAction.CallbackContext context)
-    {
-        if (context.performed)
+        private Vector2 moveDirection = Vector2.zero;
+        private bool jumpPressed = false;
+        private bool interactPressed = false;
+        private bool submitPressed = false;
+
+        private void Awake()
         {
-            moveDirection = context.ReadValue<Vector2>();
+            if (Instance != null && Instance != this) 
+            { 
+                Destroy(this); 
+            } 
+            else 
+            { 
+                Instance = this; 
+            } 
         }
-        else if (context.canceled)
-        {
-            moveDirection = context.ReadValue<Vector2>();
-        } 
-    }
 
-    public void JumpPressed(InputAction.CallbackContext context)
-    {
-        if (context.performed)
+        public void MovePressed(InputAction.CallbackContext context)
         {
-            jumpPressed = true;
+            if (context.performed)
+            {
+                moveDirection = context.ReadValue<Vector2>();
+            }
+            else if (context.canceled)
+            {
+                moveDirection = context.ReadValue<Vector2>();
+            } 
         }
-        else if (context.canceled)
+
+        public void JumpPressed(InputAction.CallbackContext context)
         {
+            if (context.performed)
+            {
+                jumpPressed = true;
+            }
+            else if (context.canceled)
+            {
+                jumpPressed = false;
+            }
+        }
+
+        public void InteractButtonPressed(InputAction.CallbackContext context)
+        {
+            if (context.performed)
+            {
+                interactPressed = true;
+            }
+            else if (context.canceled)
+            {
+                interactPressed = false;
+            } 
+        }
+
+        public void SubmitPressed(InputAction.CallbackContext context)
+        {
+            if (context.performed)
+            {
+                submitPressed = true;
+            }
+            else if (context.canceled)
+            {
+                submitPressed = false;
+            } 
+        }
+
+        public Vector2 GetMoveDirection() 
+        {
+            return moveDirection;
+        }
+
+        // for any of the below 'Get' methods, if we're getting it then we're also using it,
+        // which means we should set it to false so that it can't be used again until actually
+        // pressed again.
+
+        public bool GetJumpPressed() 
+        {
+            bool result = jumpPressed;
             jumpPressed = false;
+            return result;
         }
-    }
 
-    public void InteractButtonPressed(InputAction.CallbackContext context)
-    {
-        if (context.performed)
+        public bool GetInteractPressed() 
         {
-            interactPressed = true;
-        }
-        else if (context.canceled)
-        {
+            bool result = interactPressed;
             interactPressed = false;
-        } 
-    }
-
-    public void SubmitPressed(InputAction.CallbackContext context)
-    {
-        if (context.performed)
-        {
-            submitPressed = true;
+            return result;
         }
-        else if (context.canceled)
+
+        public bool GetSubmitPressed() 
+        {
+            bool result = submitPressed;
+            submitPressed = false;
+            return result;
+        }
+
+        public void RegisterSubmitPressed() 
         {
             submitPressed = false;
-        } 
+        }
+
     }
-
-    public Vector2 GetMoveDirection() 
-    {
-        return moveDirection;
-    }
-
-    // for any of the below 'Get' methods, if we're getting it then we're also using it,
-    // which means we should set it to false so that it can't be used again until actually
-    // pressed again.
-
-    public bool GetJumpPressed() 
-    {
-        bool result = jumpPressed;
-        jumpPressed = false;
-        return result;
-    }
-
-    public bool GetInteractPressed() 
-    {
-        bool result = interactPressed;
-        interactPressed = false;
-        return result;
-    }
-
-    public bool GetSubmitPressed() 
-    {
-        bool result = submitPressed;
-        submitPressed = false;
-        return result;
-    }
-
-    public void RegisterSubmitPressed() 
-    {
-        submitPressed = false;
-    }
-
-}
 }

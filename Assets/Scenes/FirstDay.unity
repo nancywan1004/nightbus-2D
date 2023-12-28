@@ -170,7 +170,7 @@ PrefabInstance:
     - target: {fileID: 1059283344666521969, guid: b28ce10b81b0f41578d402b55b2f703f, type: 3}
       propertyPath: onFinishReadingBrochure.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgument
       value: 
-      objectReference: {fileID: 4900000, guid: dc744348e463049a79777396aa7b4b5c, type: 3}
+      objectReference: {fileID: 4900000, guid: fa5e2a18f6fa84218af624a1894d1c2d, type: 3}
     - target: {fileID: 1059283344666521969, guid: b28ce10b81b0f41578d402b55b2f703f, type: 3}
       propertyPath: onFinishReadingBrochure.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
       value: UnityEngine.TextAsset, UnityEngine
@@ -217,7 +217,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8357108468316360590, guid: b28ce10b81b0f41578d402b55b2f703f, type: 3}
       propertyPath: m_Name
-      value: InteractionManager
+      value: BrochureInteractionManager
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -855,7 +855,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &108563698
 Transform:
   m_ObjectHideFlags: 0
@@ -1716,10 +1716,6 @@ MonoBehaviour:
     m_ActionName: Dialogue/Proceed[/Keyboard/space]
   - m_PersistentCalls:
       m_Calls: []
-    m_ActionId: 0b3712b8-0026-4330-bac7-e0dec511ddba
-    m_ActionName: Player/New action
-  - m_PersistentCalls:
-      m_Calls: []
     m_ActionId: 91d3c9fa-5dd8-4c87-bb3c-ce175403f69c
     m_ActionName: UI/Navigate[/Keyboard/w,/Keyboard/upArrow,/Keyboard/s,/Keyboard/downArrow,/Keyboard/a,/Keyboard/leftArrow,/Keyboard/d,/Keyboard/rightArrow]
   - m_PersistentCalls:
@@ -1758,6 +1754,10 @@ MonoBehaviour:
       m_Calls: []
     m_ActionId: 9bde401b-6c1d-4224-8667-309d53471021
     m_ActionName: UI/TrackedDeviceOrientation
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: 0d5f3f8d-4d78-4a6f-ada2-335173f93321
+    m_ActionName: UI/BackgroundDrag[/Mouse/rightButton]
   m_NeverAutoSwitchControlSchemes: 0
   m_DefaultControlScheme: 
   m_DefaultActionMap: Dialogue
@@ -3427,7 +3427,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &895070839
 Transform:
   m_ObjectHideFlags: 0
@@ -3572,7 +3572,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &940975647
 RectTransform:
   m_ObjectHideFlags: 0
@@ -4650,6 +4650,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   typingSpeed: 0.04
   loadGlobalsJSON: {fileID: 4900000, guid: b5380a5518e304130a82536d9d0155a6, type: 3}
+  isStackable: 0
+  poolManager: {fileID: 0}
   dialoguePanel: {fileID: 2111520283}
   dialogueText: {fileID: 751113299}
   displayNameText: {fileID: 547026304}
@@ -7306,7 +7308,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 90d2abe82e2ad40a0ae65af5b4239270, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  inkJSON: {fileID: 4900000, guid: fa5e2a18f6fa84218af624a1894d1c2d, type: 3}
+  inkJSON: {fileID: 0}
 --- !u!1 &36502348884219908
 GameObject:
   m_ObjectHideFlags: 0
@@ -11541,6 +11543,10 @@ PrefabInstance:
       propertyPath: dialogueTrigger
       value: 
       objectReference: {fileID: 2121011471}
+    - target: {fileID: 7811258749857665456, guid: 21e8609c3b58a4e9d9227aba43940c24, type: 3}
+      propertyPath: officeOpeningInkJson
+      value: 
+      objectReference: {fileID: 4900000, guid: 5cf56c167824347aab2be491f9b6b830, type: 3}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []

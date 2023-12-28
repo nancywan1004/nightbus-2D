@@ -2,7 +2,7 @@ using TMPro;
 using UnityEngine;
 using UnityEngine.Events;
 
-public class InteractionManager : MonoBehaviour
+public class BrochureInteractionManager : MonoBehaviour
 {
     //Brochure
     [SerializeField] private string[] names;
