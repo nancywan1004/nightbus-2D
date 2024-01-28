@@ -8,6 +8,7 @@ public class SwitchSprite : MonoBehaviour
     private Sprite pattern1,pattern2,pattern3,pattern4;
     private Sprite[] patternList ;
     [SerializeField] private GameObject fragment;
+    [SerializeField] private GameObject tissueBox;
     private int index;
 
     void Start()
@@ -33,6 +34,7 @@ public class SwitchSprite : MonoBehaviour
         if (index==4)
         {
             fragment.SetActive(true);
+            tissueBox.SetActive(false);
             Destroy(gameObject);
         }
     }
