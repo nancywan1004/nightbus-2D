@@ -26,9 +26,12 @@ namespace GameState
 
         private IEnumerator SwitchRoom(FirstDayGameState newGameState)
         {
-            transition.SetActive(true);
-            yield return new WaitForSeconds(2.0f);
-            transition.SetActive(false);
+            if (newGameState is FirstDayGameState.Office)
+            {
+                transition.SetActive(true);
+                yield return new WaitForSeconds(2.0f);
+                transition.SetActive(false);
+            }
             SetCurrentState(newGameState);
         }
         

@@ -1,10 +1,13 @@
 using System.Collections;
 using System.Collections.Generic;
+using GameState;
 using UnityEngine;
+using UnityEngine.Events;
 using UnityEngine.UI;
 
 public class SwitchSprite : MonoBehaviour
 {
+    public UnityEvent<FirstDayGameState> OnSpecialSpriteRevealed;
     [SerializeField] private Sprite[] patternList;
     [SerializeField] private GameObject fragment;
     [SerializeField] private GameObject tissueBox;
@@ -20,6 +23,7 @@ public class SwitchSprite : MonoBehaviour
         {
             fragment.SetActive(true);
             tissueBox.SetActive(false);
+            OnSpecialSpriteRevealed?.Invoke(FirstDayGameState.Clinic);
             Destroy(gameObject);
         }
         else
