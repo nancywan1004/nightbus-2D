@@ -3845,6 +3845,26 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 459014116}
     m_Modifications:
+    - target: {fileID: 1226926894154730574, guid: d4e56135cc28847198d2966713e74105, type: 3}
+      propertyPath: m_SizeDelta.x
+      value: 650
+      objectReference: {fileID: 0}
+    - target: {fileID: 2973131058317103842, guid: d4e56135cc28847198d2966713e74105, type: 3}
+      propertyPath: m_SizeDelta.x
+      value: 650
+      objectReference: {fileID: 0}
+    - target: {fileID: 3020488903572431140, guid: d4e56135cc28847198d2966713e74105, type: 3}
+      propertyPath: m_SizeDelta.x
+      value: 650
+      objectReference: {fileID: 0}
+    - target: {fileID: 3352700773038887033, guid: d4e56135cc28847198d2966713e74105, type: 3}
+      propertyPath: m_SizeDelta.x
+      value: 650
+      objectReference: {fileID: 0}
+    - target: {fileID: 3391183805488598381, guid: d4e56135cc28847198d2966713e74105, type: 3}
+      propertyPath: m_SizeDelta.x
+      value: 650
+      objectReference: {fileID: 0}
     - target: {fileID: 7081035370112826240, guid: d4e56135cc28847198d2966713e74105, type: 3}
       propertyPath: m_Name
       value: DialoguePool
