@@ -8,7 +8,7 @@ public class GlobalInteractionUIManager : MonoBehaviour
 
     [SerializeField] private Button _secondDaySceneSwitchButton;
 
-    private const string SECOND_DAY_SCENE_NAME = "SecondDay";
+    private const string SECOND_DAY_SCENE_NAME = "SecondDay(InRoom)";
     private void Awake()
     {
         DontDestroyOnLoad(this);
@@ -22,7 +22,7 @@ public class GlobalInteractionUIManager : MonoBehaviour
 
     private void LoadSecondDayScene()
     {
-        SceneManager.LoadSceneAsync("SecondDay", LoadSceneMode.Single);
+        SceneManager.LoadSceneAsync(SECOND_DAY_SCENE_NAME, LoadSceneMode.Single);
         SceneManager.sceneLoaded += OnSceneLoaded;
     }
 
