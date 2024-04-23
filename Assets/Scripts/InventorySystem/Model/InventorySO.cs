@@ -2,8 +2,6 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using System;
-using Unity.VisualScripting;
-using JetBrains.Annotations;
 
 namespace Inventory.Model
 {
@@ -23,13 +21,18 @@ namespace Inventory.Model
                 inventoryItems.Add(InventoryItem2.GetEmptyItem());
             }
         }
+        
         public void AddItem(ItemSO item)
         {
             for (int i = 0; i < inventoryItems.Count; i++)
             {
+                // if the ItemSO has already been added to InventoryItems, return
+                if (!inventoryItems[i].IsEmpty && Equals(inventoryItems[i].item.ID, item.ID))
+                {
+                    return;
+                }
                 if (inventoryItems[i].IsEmpty)
                 {
-
                     inventoryItems[i] = new InventoryItem2
                     {
                         item = item
@@ -60,6 +63,7 @@ namespace Inventory.Model
             return inventoryItems[itemIndex];
         }
     }
+    
     [Serializable]
     public struct InventoryItem2
     {

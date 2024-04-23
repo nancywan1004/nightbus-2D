@@ -1,9 +1,12 @@
+using Inventory;
+using Inventory.Model;
 using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.UI;
 
 public class HighlightableObject : MonoBehaviour, ISelectHandler, IDeselectHandler
 {
+    [SerializeField] private ItemSO inventoryItemSO;
     private Image _image;
     private static readonly int Thickness = Shader.PropertyToID("_Thickness");
 
@@ -14,6 +17,10 @@ public class HighlightableObject : MonoBehaviour, ISelectHandler, IDeselectHandl
 
     public void Activate()
     {
+        if (inventoryItemSO != null)
+        {
+            InventoryManager.Instance.AddToInventoryData(inventoryItemSO);
+        }
         _image.material.SetFloat(Thickness, 2.5f);
     }
 

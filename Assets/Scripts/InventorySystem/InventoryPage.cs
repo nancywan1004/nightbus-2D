@@ -1,11 +1,12 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using InventorySystem.UI;
 using UnityEngine;
 
 namespace Inventory.UI
 {
-    public class InventoryPage : MonoBehaviour
+    public class InventoryPage : MonoBehaviour, IInventoryPage
     {
         [SerializeField] private InventoryItem itemPrefab;
         [SerializeField] private RectTransform contentPanel;
@@ -107,11 +108,10 @@ namespace Inventory.UI
             }
         }
 
-        internal void UpdateDescription(int itemIndex, string description)
+        public void UpdateDescription(int itemIndex, string description)
         {
             itemDescription.SetDescription(description);
             DeselectAllItems();
-
         }
     }
 }

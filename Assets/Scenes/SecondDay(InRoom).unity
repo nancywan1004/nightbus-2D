@@ -1460,6 +1460,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c4b61e891d0e543eca4d413e73dbe031, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  inventoryItemSO: {fileID: 11400000, guid: e0fc4b9796728dc45b3ce2a0e4695878, type: 2}
 --- !u!1 &459014115
 GameObject:
   m_ObjectHideFlags: 0
@@ -2410,10 +2411,6 @@ MonoBehaviour:
         m_CallState: 2
     m_ActionId: 82378bc2-726c-4af4-9ae1-64ab7be116bb
     m_ActionName: Dialogue/Proceed[/Keyboard/space]
-  - m_PersistentCalls:
-      m_Calls: []
-    m_ActionId: 0b3712b8-0026-4330-bac7-e0dec511ddba
-    m_ActionName: Player/New action
   - m_PersistentCalls:
       m_Calls: []
     m_ActionId: 91d3c9fa-5dd8-4c87-bb3c-ce175403f69c
@@ -3700,6 +3697,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c4b61e891d0e543eca4d413e73dbe031, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  inventoryItemSO: {fileID: 0}
 --- !u!1 &2090619583
 GameObject:
   m_ObjectHideFlags: 0
